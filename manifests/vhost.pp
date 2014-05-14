@@ -167,7 +167,12 @@ define apache::vhost(
     $additional_includes         = [],
     $apache_version              = $::apache::apache_version,
     $suexec_user_group           = undef,
-  ) {
+    $python_handler              = undef,
+    $python_path                 = undef,
+    $python_debug                = undef,
+    $python_auto_reload          = undef,
+) {
+
   # The base class must be included first because it is used by parameter defaults
   if ! defined(Class['apache']) {
     fail('You must include the apache base class before using any apache defined resources')
@@ -521,6 +526,11 @@ define apache::vhost(
   #   - $wsgi_import_script
   #   - $wsgi_process_group
   #   - $wsgi_script_aliases
+  # python fragment:
+  #   - $python_handler
+  #   - $python_path
+  #   - $python_debug
+  #   - $python_auto_reload
   file { "${priority_real}-${filename}.conf":
     ensure  => $ensure,
     path    => "${::apache::vhost_dir}/${priority_real}-${filename}.conf",

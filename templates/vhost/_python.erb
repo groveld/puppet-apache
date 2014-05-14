@@ -1,0 +1,13 @@
+<% if @python_handler -%>
+  SetHandler mod_python
+  PythonHandler <%= @python_handler %>
+<% end -%>
+<% if @python_path -%>
+  PythonPath <%= @python_path %>
+<% end -%>
+<% if @python_debug -%>
+  PythonDebug <%= @python_debug %>
+<% end -%>
+<% if @python_auto_reload -%>
+  PythonAutoReload <%= @python_auto_reload %>
+<% end -%>
