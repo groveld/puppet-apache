@@ -398,6 +398,12 @@ define apache::vhost(
     }
   }
 
+  if $python_handler {
+    if ! defined(Class['apache::mod::python']) {
+      include ::apache::mod::python
+    }
+  }
+
   # Configure the defaultness of a vhost
   if $priority {
     $priority_real = $priority

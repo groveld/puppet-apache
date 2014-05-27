@@ -153,6 +153,7 @@
     <%- if directory['suphp'] and @suphp_engine == 'on' -%>
     suPHP_UserGroup <%= directory['suphp']['user'] %> <%= directory['suphp']['group'] %>
     <%- end -%>
+    <%= scope.function_template(['apache/vhost/_python.erb']) -%>
     <%- if directory['custom_fragment'] -%>
     <%= directory['custom_fragment'] %>
     <%- end -%>
